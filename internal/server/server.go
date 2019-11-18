@@ -4,6 +4,8 @@ import (
 	"io"
 	"net/http"
 	"os"
+	"path"
+	"path/filepath"
 
 	"github.com/golang/glog"
 	//"github.com/labstack/echo"
@@ -25,7 +27,16 @@ func StartHttpServer(conf *configs.WebConfig, ver string) {
 	e.HTTPErrorHandler = customHTTPErrorHandler
 
 	if len(conf.AccessLogPath) > 0 {
+		dir := path.Dir(conf.AccessLogPath)
+
+		err := os.MkdirAll(dir, os.ModeDir)
+		if err != nil {
+			glog.Error("mkdir failed.", dir, err)
+		}
+
 		fileLog := rotate.New(conf.AccessLogPath)
+
+
 		e.Use(middleware.LoggerWithConfig(middleware.LoggerConfig{Output: io.MultiWriter(os.Stdout, fileLog)}))
 	} else {
 		e.Use(middleware.Logger())
