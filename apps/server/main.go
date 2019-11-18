@@ -9,8 +9,8 @@ import (
 	"syscall"
 
 	"github.com/golang/glog"
-
-	"wps.ktkt.com/app2017/elastic_query-test/server"
+	"wps.ktkt.com/app2017/elastic_query-test/configs"
+	"wps.ktkt.com/app2017/elastic_query-test/internal/server"
 )
 
 var (
@@ -30,8 +30,11 @@ func main() {
 		os.Exit(0)
 	}
 
+	configs.Init()
 
-	ctx, cancel := context.WithCancel(context.Background())
+	cfg := configs.Conf
+
+	_, cancel := context.WithCancel(context.Background())
 
 
 	// 开启http服务

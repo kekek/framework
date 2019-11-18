@@ -1,14 +1,14 @@
 package server
 
-// http 接受上报数据， 发送到队列
 import (
 	"io"
 	"net/http"
 	"os"
 
 	"github.com/golang/glog"
-	"github.com/labstack/echo"
-	"github.com/labstack/echo/middleware"
+	//"github.com/labstack/echo"
+	"github.com/labstack/echo/v4"
+	"github.com/labstack/echo/v4/middleware"
 	"wps.ktkt.com/app2017/elastic_query-test/configs"
 	"wps.ktkt.com/app2017/elastic_query-test/internal/server/handler"
 	"wps.ktkt.com/app2017/elastic_query-test/pkg/response"
