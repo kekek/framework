@@ -1,0 +1,25 @@
+Debug=true
+
+ElasticSearchAddr= ["http://elastic:9200"]
+
+[Web]
+
+## 生产者的topic 随用随定
+## 消费者需要提前 定好消费
+[Nsq]
+Topics= ["user_event"]
+ConsumerIds = ["user_event_customer"]
+LookUpdAddress= ["localhost:4061","localhost:4161","localhost:4262"]
+
+
+[signAuth]
+## 是否验证
+Enable = true
+Expire = "10m"
+###  前缀忽略规则
+IgnorePrefixList = []
+Sep = "#"
+#### app
+[signAuth.App]
+    "jiaoyishi_soft" = "123456"
+
