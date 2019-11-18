@@ -10,7 +10,7 @@ import (
 
 	"github.com/golang/glog"
 
-	"wps.ktkt.com/"
+	"wps.ktkt.com/app2017/elastic_query-test/server"
 )
 
 var (
